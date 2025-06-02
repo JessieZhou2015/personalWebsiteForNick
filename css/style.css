@@ -350,7 +350,7 @@ a:hover {
 .timeline-content {
     background-color: rgba(255, 255, 255, 0.03);
     border-radius: 10px;
-    padding: 25px;
+    padding: 20px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: var(--transition);
 }
@@ -376,11 +376,10 @@ a:hover {
 .timeline-content .period {
     font-size: 14px;
     color: rgba(255, 249, 245, 0.7);
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
-.timeline-content .description {
-    color: rgba(255, 249, 245, 0.9);
+.timeline-content p {
     margin-bottom: 0;
 }
 
@@ -841,4 +840,23 @@ footer p {
 
 .wechat-icon:hover .wechat-qr {
     display: block;
+}
+
+.education-tag {
+    display: inline-block;
+    font-size: 10px;
+    color: rgba(255, 249, 245, 0.5);
+    background-color: transparent;
+    padding: 0 8px;
+    border-radius: 10px;
+    margin-left: 5px;
+    vertical-align: middle;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    line-height: 1.4;
+    height: 16px;
+    line-height: 14px;
+}
+
+.education-tag:first-of-type {
+    margin-left: 5px;
 } 
