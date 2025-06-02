@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倪辰 | UI/UX设计师</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .project-highlight {
+            background-color: rgba(255, 168, 38, 0.05);
+            border-left: 3px solid var(--primary-color);
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .project-highlight h3 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .project-highlight p {
+            margin-bottom: 0;
+            color: #f0f0f0;
+        }
+        
+        .highlight-text {
+            color: var(--primary-color);
+            font-size: 1.1em;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .project-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            overflow: auto;
+        }
+        
+        .project-image img {
+            max-width: 100%;
+            object-fit: contain;
+        }
+        
+        .modal-fullscreen .modal-body {
+            padding: 0;
+            overflow: auto;
+        }
+        
+        .zodiac-icon {
+            position: relative;
+            vertical-align: top;
+            margin-left: 5px;
+            margin-top: -18px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            display: inline-block;
+        }
+        
+        .zodiac-icon:hover {
+            opacity: 1;
+        }
+        
+        .zodiac-img {
+            width: 16px;
+            height: auto;
+            filter: brightness(0) invert(0.5) opacity(0.6);
+            transition: filter 0.3s ease;
+            position: relative;
+            top: 0;
+        }
+        
+        .zodiac-icon:hover .zodiac-img {
+            filter: brightness(0) invert(0.7) opacity(0.8);
+        }
+        
+        /* 手机端的样式调整 */
+        @media (max-width: 767px) {
+            .zodiac-icon {
+                margin-top: -10px; /* 手机端减小上边距 */
+            }
+            
+            .zodiac-img {
+                width: 14px; /* 手机端稍微减小图标 */
+                filter: brightness(0) invert(0.5) opacity(0.6);
+            }
+            
+            .zodiac-icon:hover .zodiac-img {
+                filter: brightness(0) invert(0.7) opacity(0.8);
+            }
+        }
+        
+        .contact-item-centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .contact-item-centered .icon {
+            margin-bottom: 15px;
+        }
+        
+        .contact-item-centered .text {
+            text-align: center;
+        }
+
+        /* 手机端的导航栏样式调整 */
+        @media (max-width: 767px) {
+            .navbar-collapse {
+                text-align: center;
+            }
+            
+            .navbar-nav {
+                width: 100%;
+            }
+            
+            .nav-item {
+                margin: 8px 0;
+            }
+            
+            .nav-link {
+                font-size: 1.1rem;
+                padding: 8px 0;
+            }
+            
+            .navbar-brand {
+                margin: 0 auto;
+            }
+            
+            .navbar-toggler {
+                position: absolute;
+                right: 15px;
+                top: 15px;
+            }
+        }
+
+        /* 手机端的联系方式样式调整 */
+        @media (max-width: 767px) {
+            .contact-item-centered {
+                padding: 10px;
+            }
+            
+            .contact-item-centered .icon {
+                margin-bottom: 8px;
+                font-size: 1.2rem;
+            }
+            
+            .contact-item-centered .text h4 {
+                font-size: 0.9rem;
+                margin-bottom: 5px;
+            }
+            
+            .contact-item-centered .text p {
+                font-size: 0.8rem;
+                margin-bottom: 0;
+            }
+            
+            .contact-info {
+                margin-bottom: 15px;
+            }
+            
+            /* 调整列宽，使每行显示两个联系方式 */
+            #contact .col-lg-4 {
+                width: 50%;
+                padding: 0 5px;
+            }
+            
+            /* 最后一个联系方式（微信）占据整行 */
+            #contact .col-lg-4:last-child {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">倪辰</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">技能</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">作品</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">经验</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">联系</a>
+                    </li>
+                </ul>
+                <div class="contact-info d-none d-lg-block">
+                    <i class="fas fa-envelope"></i> <span>bjnc@foxmail.com</span>
+                    <i class="fas fa-phone-alt" style="margin-left: 15px;"></i> <span>+86 185 1459 2618</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页 -->
+    <section id="home" class="section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="profile-img-container">
+                        <!-- 这里放置个人照片 -->
+                        <img src="img/personal_photo.png" alt="倪辰" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="name animate__animated animate__fadeInUp">倪辰
+                        <span class="zodiac-icon" data-bs-toggle="tooltip" data-bs-placement="right" title="1988年12月21日">
+                            <img src="img/射手座.png" alt="射手座" class="zodiac-img">
+                        </span>
+                    </h1>
+                    <h2 class="title animate__animated animate__fadeInUp">UI / UX 设计师</h2>
+                    <p class="intro animate__animated animate__fadeInUp">
+                        <span class="highlight-text">超过10年</span>的产品设计工作经验，拥有<span class="highlight-text">全链路设计</span>能力。主导多个从0-1/1-N的项目，并成功推动产品体验的提升与业务增长。同时具备<span class="highlight-text">商业思维</span>，能将设计与商业价值结合，通过设计提升转化率、留存率等关键指标，平衡用户体验与开发成本，<span class="highlight-text">数据验证结果</span>。
+                    </p>
+                    <div class="project-highlight animate__animated animate__fadeInUp">
+                        <p>曾服务暴风集团旗下暴风金融以及浩辰CAD软件等<span class="highlight-text">百万级用户公司</span>。通过设计助力胡润猎豹榜企业实现单月<span class="highlight-text">GMV突破8.5亿</span>的商业目标。</p>
+                    </div>
+                    <a href="files/倪辰_高级UI_10年经验_18514592618.pdf" class="btn btn-download animate__animated animate__fadeInUp" download target="_blank">
+                        <i class="fas fa-download"></i> 下载简历
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>技能</h2>
+                <p>我擅长的专业领域</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3>审美创新</h3>
+                        <p>对于设计趋势变化有敏锐的洞察与感知能力，包括最新设计风格、色彩搭配等。</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>数据思维</h3>
+                        <p>鉴于系统后台埋点数据判断设计合理性，实现过迭代优化转化24%的数据结果成绩。</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>逻辑思维</h3>
+                        <p>具备对问题本质挖掘的能力，在产品需求评审会上多次准确提出产品逻辑矛盾的问题并被采纳，获得领导好评。</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <h3>设计体系</h3>
+                        <p>基于公司业务及人员迭代，搭建组件库及物料情绪版。</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>开发协同</h3>
+                        <p>了解前端常用语言，善于从开发成本等角度思考页面。</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>用户思维</h3>
+                        <p>通过用户数据收集及整理分析，使设计更贴近用户使用，持续优化用户体验。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品 -->
+    <section id="portfolio" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>作品</h2>
+                <p>我的设计作品展示</p>
+            </div>
+            <div class="row portfolio-container">
+                <!-- 作品项目1 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="portfolio-item" data-project="project1">
+                        <img src="img/1.供应链hover.png" alt="供应链管理系统" class="img-fluid">
+                        <div class="portfolio-overlay">
+                            <h3>供应链管理系统</h3>
+                            <p>持续优化迭代目的明确，更好的助力企业业务管理及提升效率</p>
+                            <a href="#" class="btn-view-project" data-project="project1">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 作品项目2 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="portfolio-item" data-project="project2">
+                        <img src="img/2.门店帮手hover.png" alt="门店帮手APP" class="img-fluid">
+                        <div class="portfolio-overlay">
+                            <h3>门店帮手APP</h3>
+                            <p>围绕日常使用场景为商家提供优质、便捷的汽配采卖体验</p>
+                            <a href="#" class="btn-view-project" data-project="project2">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 作品项目3 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="portfolio-item" data-project="project3">
+                        <img src="img/3.车店管家hover.png" alt="车店管家APP" class="img-fluid">
+                        <div class="portfolio-overlay">
+                            <h3>车店管家APP</h3>
+                            <p>通过用户调研了解客户，发现核心问题，针对性的制定设计策略和目标，提升体验与操作提效</p>
+                            <a href="#" class="btn-view-project" data-project="project3">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 项目详细信息模态框 -->
+        <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-back me-3" data-bs-dismiss="modal">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <h5 class="modal-title mb-0" id="projectTitle"></h5>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="project-content" id="projectContent">
+                            <!-- 项目内容将通过JavaScript动态加载 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 经验 -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>经验</h2>
+                <p>我的专业成长历程</p>
+            </div>
+            
+            <!-- 工作经验 -->
+            <div class="experience-container">
+                <h3 class="experience-category">工作经验</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>高级UI设计师/设计负责人</h4>
+                            <h5>甲乙丙丁（北京）电子商务股份有限公司</h5>
+                            <p class="period">2020年8月 - 2025年1月</p>
+                            <p class="description">
+                                <strong>工作职责：</strong><br>
+                                • 交互迭代：基于项目新功能提出新业务完整UED模块，持续优化用户体验<br>
+                                • 多端交互：整合处理大量移动端与PC端复杂业务逻辑融合，确保无缝衔接最佳使用<br>
+                                • 挖掘机会点：通过线上/线下调研，了解实际需求，发现新的设计机会与新增长点<br>
+                                • 设计体系：搭建多端不同业务类型的设计组件及规范，及相应物料的情绪版参考<br>
+                                • 项目管理：负责设计走查并与开发部门及时沟通，及时跟进与追踪，确保平稳上线<br>
+                                <strong>主要项目：</strong><br>
+                                • ERP供应链管理后台迭代设计<br>
+                                • 门店帮手APP界面迭代设计<br>
+                                • 车店管家APP商家大学模块设计
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>UI/UX设计师</h4>
+                            <h5>暴风金融</h5>
+                            <p class="period">2018年10月 - 2020年4月</p>
+                            <p class="description">
+                                <strong>工作职责：</strong><br>
+                                • 需求分析与定位：与产品协作，明确目标和核心需求<br>
+                                • 设计规范与协作：制定完整的设计流程体系，完善设计规范<br>
+                                • 跟进落地与优化：负责与各个部门之间配合沟通，走查设计开发还原度<br>
+                                • 项目复盘与团队建设：复盘设计工作、沉淀项目及设计文档输出<br>
+                                <strong>主要项目：</strong><br>
+                                • 暴风金融APP/WEB迭代设计：重新建立设计规范，提升了产品品牌化识别与专业度，用户留存率增加13%，投资转化提升43%
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>UI/UX设计师</h4>
+                            <h5>苏州浩辰软件股份有限公司北京分公司</h5>
+                            <p class="period">2015年8月 - 2018年8月</p>
+                            <p class="description">
+                                <strong>工作职责：</strong><br>
+                                • 设计搭建：主导从0-1设计项目，确立品牌设计语言并建立设计规范及搭建组件库<br>
+                                • 视觉设计：把控设计细节，负责多业务线产品的设计主视觉工作<br>
+                                • 设计拆解：根据业务目标需求，清晰把握整个设计项目的最终目标<br>
+                                • 设计支持：配合运营部门完成相关的物料设计<br>
+                                • 项目管理：负责设计走查并与开发部门及时沟通<br>
+                                <strong>主要项目：</strong><br>
+                                • 浩辰云交易商城/官网WEB界面设计：图纸交易页面转化率提升14%，社区项目用户活跃度提升42%
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 教育经历 -->
+            <div class="experience-container mt-5">
+                <h3 class="experience-category">教育经历</h3>
+                <div class="row education-timeline-container">
+                    <div class="col-md-6">
+                        <div class="timeline education-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <h4>电子商务</h4>
+                                    <h5>北京开放大学</h5>
+                                    <p class="period">2022年 - 2024年</p>
+                                    <p>本科（专升本）学信网可查</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="timeline education-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <h4>环境艺术设计</h4>
+                                    <h5>北京科技职业学院</h5>
+                                    <p class="period">2007年 - 2010年</p>
+                                    <p>专科</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系 -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系</h2>
+                <p>期待与您的合作</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <div class="contact-info text-center">
+                        <div class="contact-item-centered">
+                            <div class="icon mx-auto"><i class="fas fa-envelope"></i></div>
+                            <div class="text">
+                                <h4>电子邮件</h4>
+                                <p>bjnc@foxmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <div class="contact-info text-center">
+                        <div class="contact-item-centered">
+                            <div class="icon mx-auto"><i class="fas fa-phone-alt"></i></div>
+                            <div class="text">
+                                <h4>电话</h4>
+                                <p>+86 185 1459 2618</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="contact-info text-center">
+                        <div class="contact-item-centered wechat-icon">
+                            <div class="icon mx-auto">
+                                <i class="fab fa-weixin"></i>
+                                <div class="wechat-qr">
+                                    <img src="img/wechat_nc110102.png" alt="微信二维码">
+                                </div>
+                            </div>
+                            <div class="text">
+                                <h4>微信</h4>
+                                <p>nc110102</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>&copy; 2025 倪辰. 保留所有权利</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 项目内容数据 -->
+    <script>
+        // 项目详情数据
+        const projectData = {
+            project1: {
+                title: "供应链管理系统设计",
+                images: ["img/1.供应链.png"]
+            },
+            project2: {
+                title: "门店帮手APP设计",
+                images: ["img/2.门店帮手.png"]
+            },
+            project3: {
+                title: "车店管家APP设计",
+                images: ["img/3.车店管家.png"]
+            }
+        };
+    </script>
+
+    <!-- JavaScript 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- 自定义脚本 -->
+    <script src="js/script.js"></script>
+    <script>
+        // 初始化所有tooltip
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+</body>
+</html> 
