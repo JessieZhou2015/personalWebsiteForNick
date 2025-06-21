@@ -91,6 +91,31 @@
             filter: brightness(0) invert(0.7) opacity(0.8);
         }
         
+        .education-icon {
+            position: relative;
+            vertical-align: top;
+            margin-left: 5px;
+            margin-top: -23px;
+            cursor: pointer;
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
+            display: inline-block;
+        }
+        
+        .education-icon:hover {
+            opacity: 0.7;
+        }
+        
+        .education-icon i {
+            font-size: 16px;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+        
+        .education-icon:hover i {
+            color: #aaa;
+        }
+        
         /* 手机端的样式调整 */
         @media (max-width: 767px) {
             .zodiac-icon {
@@ -104,6 +129,14 @@
             
             .zodiac-icon:hover .zodiac-img {
                 filter: brightness(0) invert(0.7) opacity(0.8);
+            }
+            
+            .education-icon {
+                margin-top: -14px; /* 手机端减小上边距 */
+            }
+            
+            .education-icon i {
+                font-size: 14px; /* 手机端稍微减小图标 */
             }
         }
         
@@ -267,6 +300,9 @@
                     <h1 class="name animate__animated animate__fadeInUp">倪辰
                         <span class="zodiac-icon" data-bs-toggle="tooltip" data-bs-placement="right" title="1988年12月21日">
                             <img src="img/射手座.png" alt="射手座" class="zodiac-img">
+                        </span>
+                        <span class="education-icon" data-bs-toggle="tooltip" data-bs-placement="right" title="本科">
+                            <i class="fas fa-graduation-cap"></i>
                         </span>
                     </h1>
                     <h2 class="title animate__animated animate__fadeInUp">UI / UX 设计师</h2>
@@ -488,6 +524,7 @@
             </div>
             
             <!-- 教育经历 -->
+            <!--
             <div class="experience-container mt-5">
                 <h3 class="experience-category">教育经历</h3>
                 <div class="row education-timeline-container">
@@ -517,6 +554,7 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
     </section>
 
