@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按钮样式测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #090712;
+            color: #FFF9F5;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 168, 38, 0.2);
+            border-radius: 10px;
+        }
+        
+        .test-title {
+            color: #FFA826;
+            margin-bottom: 15px;
+        }
+        
+        .btn-download {
+            background-color: #FFA826;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            border: 1px solid #FFA826;
+        }
+        
+        .btn-download:hover {
+            background-color: #e89518;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 168, 38, 0.2);
+            border-color: #e89518;
+        }
+        
+        .btn-download i {
+            margin-right: 10px;
+        }
+        
+        .btn-test {
+            background-color: #FFA826;
+            color: #fff;
+            padding: 10px 20px;
+            border: 1px solid #FFA826;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .btn-test:hover {
+            background-color: #e89518;
+            border-color: #e89518;
+        }
+        
+        .info-box {
+            background-color: rgba(255, 168, 38, 0.1);
+            border-left: 3px solid #FFA826;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .css-code {
+            background-color: #1a1a1a;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>按钮样式测试页面</h1>
+        
+        <div class="info-box">
+            <h3>测试目的</h3>
+            <p>此页面用于测试"下载简历"按钮在Windows和Mac系统上的显示差异，确保按钮的外框和填充在所有平台上都能正常显示。</p>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="test-title">1. 下载简历按钮测试</h2>
+            <p>这是主要的下载简历按钮，应该显示为橙色背景、白色文字、圆角边框：</p>
+            <a href="#" class="btn-download">
+                <i class="fas fa-download"></i> 下载简历
+            </a>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="test-title">2. 其他按钮测试</h2>
+            <p>测试其他按钮样式：</p>
+            <button class="btn-test">测试按钮1</button>
+            <button class="btn-test">测试按钮2</button>
+            <button class="btn-test">测试按钮3</button>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="test-title">3. 平台信息</h2>
+            <div id="platform-info">
+                <p><strong>操作系统:</strong> <span id="os-info">检测中...</span></p>
+                <p><strong>浏览器:</strong> <span id="browser-info">检测中...</span></p>
+                <p><strong>CSS支持:</strong> <span id="css-support">检测中...</span></p>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="test-title">4. 当前CSS样式</h2>
+            <p>下载简历按钮的CSS样式：</p>
+            <div class="css-code">
+.btn-download {
+    background-color: #FFA826;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    border: 1px solid #FFA826;
+}
+
+.btn-download:hover {
+    background-color: #e89518;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 168, 38, 0.2);
+    border-color: #e89518;
+}
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="test-title">5. 测试结果</h2>
+            <div id="test-results">
+                <p>请检查以下项目：</p>
+                <ul>
+                    <li>✅ 按钮是否有橙色背景？</li>
+                    <li>✅ 按钮是否有白色边框？</li>
+                    <li>✅ 按钮是否有圆角？</li>
+                    <li>✅ 鼠标悬停时是否有动画效果？</li>
+                    <li>✅ 文字是否为白色？</li>
+                    <li>✅ 图标是否正常显示？</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script>
+        // 检测平台信息
+        function detectPlatform() {
+            const userAgent = navigator.userAgent;
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            
+            let os = 'unknown';
+            if (userAgent.indexOf('Windows') !== -1) os = 'Windows';
+            else if (userAgent.indexOf('Mac') !== -1) os = 'Mac';
+            else if (userAgent.indexOf('Linux') !== -1) os = 'Linux';
+            
+            let browser = 'unknown';
+            if (userAgent.indexOf('Chrome') !== -1) browser = 'Chrome';
+            else if (userAgent.indexOf('Firefox') !== -1) browser = 'Firefox';
+            else if (userAgent.indexOf('Safari') !== -1) browser = 'Safari';
+            else if (userAgent.indexOf('Edge') !== -1) browser = 'Edge';
+            
+            // 检测CSS支持
+            let cssSupport = [];
+            if (CSS.supports('display', 'flex')) cssSupport.push('Flexbox');
+            if (CSS.supports('display', 'grid')) cssSupport.push('CSS Grid');
+            if (CSS.supports('transform', 'translateY(-3px)')) cssSupport.push('Transform');
+            if (CSS.supports('box-shadow', '0 10px 20px rgba(255, 168, 38, 0.2)')) cssSupport.push('Box Shadow');
+            
+            document.getElementById('os-info').textContent = os;
+            document.getElementById('browser-info').textContent = browser;
+            document.getElementById('css-support').textContent = cssSupport.join(', ');
+        }
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            detectPlatform();
+            
+            // 添加按钮点击事件
+            document.querySelectorAll('.btn-test').forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('按钮点击正常！');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
