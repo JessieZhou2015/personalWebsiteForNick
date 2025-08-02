@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDN测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .test-item {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        
+        .loading {
+            background-color: #fff3cd;
+            border-color: #ffeaa7;
+            color: #856404;
+        }
+        
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>CDN资源加载测试</h1>
+        
+        <div class="test-item" id="platform-info">
+            <h3>平台信息</h3>
+            <p id="platform-details">检测中...</p>
+        </div>
+        
+        <div class="test-item" id="bootstrap-test">
+            <h3>Bootstrap CSS 测试</h3>
+            <p id="bootstrap-status">测试中...</p>
+        </div>
+        
+        <div class="test-item" id="bootstrap-js-test">
+            <h3>Bootstrap JavaScript 测试</h3>
+            <p id="bootstrap-js-status">测试中...</p>
+        </div>
+        
+        <div class="test-item" id="slick-test">
+            <h3>Slick Carousel 测试</h3>
+            <p id="slick-status">测试中...</p>
+        </div>
+        
+        <div class="test-item" id="fontawesome-test">
+            <h3>Font Awesome 测试</h3>
+            <p id="fontawesome-status">测试中...</p>
+        </div>
+        
+        <div class="test-item" id="jquery-test">
+            <h3>jQuery 测试</h3>
+            <p id="jquery-status">测试中...</p>
+        </div>
+        
+        <div class="test-item">
+            <h3>测试按钮</h3>
+            <button class="btn" onclick="testBootstrap()">测试Bootstrap功能</button>
+            <button class="btn" onclick="testFontAwesome()">测试Font Awesome图标</button>
+            <button class="btn" onclick="testjQuery()">测试jQuery功能</button>
+        </div>
+        
+        <div class="test-item">
+            <h3>测试结果</h3>
+            <div id="test-results"></div>
+        </div>
+    </div>
+    
+    <!-- 加载测试资源 -->
+    <link href="https://unpkg.com/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" onload="updateStatus('bootstrap-test', 'success', 'Bootstrap CSS 加载成功')" onerror="updateStatus('bootstrap-test', 'error', 'Bootstrap CSS 加载失败')">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" onload="updateStatus('fontawesome-test', 'success', 'Font Awesome 加载成功')" onerror="updateStatus('fontawesome-test', 'error', 'Font Awesome 加载失败')">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" onload="updateStatus('jquery-test', 'success', 'jQuery 加载成功')" onerror="updateStatus('jquery-test', 'error', 'jQuery 加载失败')"></script>
+    <script src="https://unpkg.com/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" onload="updateStatus('bootstrap-js-test', 'success', 'Bootstrap JavaScript 加载成功')" onerror="updateStatus('bootstrap-js-test', 'error', 'Bootstrap JavaScript 加载失败')"></script>
+    <script type="text/javascript" src="https://unpkg.com/slick-carousel@1.8.1/slick/slick.min.js" onload="updateStatus('slick-test', 'success', 'Slick Carousel 加载成功')" onerror="updateStatus('slick-test', 'error', 'Slick Carousel 加载失败')"></script>
+    
+    <script>
+        // 更新状态显示
+        function updateStatus(elementId, status, message) {
+            const element = document.getElementById(elementId);
+            const statusElement = document.getElementById(elementId.replace('-test', '-status'));
+            
+            element.className = 'test-item ' + status;
+            statusElement.textContent = message;
+        }
+        
+        // 检测平台信息
+        function detectPlatform() {
+            const userAgent = navigator.userAgent;
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const language = navigator.language;
+            
+            let os = 'unknown';
+            if (userAgent.indexOf('Windows') !== -1) os = 'Windows';
+            else if (userAgent.indexOf('Mac') !== -1) os = 'Mac';
+            else if (userAgent.indexOf('Linux') !== -1) os = 'Linux';
+            
+            let network = 'global';
+            const chinaTimezones = ['Asia/Shanghai', 'Asia/Urumqi', 'Asia/Harbin'];
+            const chinaLanguages = ['zh-CN', 'zh-Hans', 'zh'];
+            
+            if (chinaTimezones.includes(timezone) || chinaLanguages.includes(language)) {
+                network = 'china';
+            }
+            
+            const platformInfo = `
+                <strong>操作系统:</strong> ${os}<br>
+                <strong>网络环境:</strong> ${network}<br>
+                <strong>时区:</strong> ${timezone}<br>
+                <strong>语言:</strong> ${language}<br>
+                <strong>用户代理:</strong> ${userAgent.substring(0, 100)}...
+            `;
+            
+            document.getElementById('platform-details').innerHTML = platformInfo;
+            document.getElementById('platform-info').className = 'test-item success';
+        }
+        
+        // 测试Bootstrap功能
+        function testBootstrap() {
+            const results = document.getElementById('test-results');
+            if (typeof bootstrap !== 'undefined') {
+                results.innerHTML += '<p class="success">✅ Bootstrap功能正常</p>';
+            } else {
+                results.innerHTML += '<p class="error">❌ Bootstrap功能异常</p>';
+            }
+        }
+        
+        // 测试Font Awesome图标
+        function testFontAwesome() {
+            const results = document.getElementById('test-results');
+            const testIcon = document.createElement('i');
+            testIcon.className = 'fas fa-heart';
+            testIcon.style.color = 'red';
+            
+            if (testIcon.className.includes('fas')) {
+                results.innerHTML += '<p class="success">✅ Font Awesome图标正常 <i class="fas fa-heart" style="color: red;"></i></p>';
+            } else {
+                results.innerHTML += '<p class="error">❌ Font Awesome图标异常</p>';
+            }
+        }
+        
+        // 测试jQuery功能
+        function testjQuery() {
+            const results = document.getElementById('test-results');
+            if (typeof $ !== 'undefined') {
+                results.innerHTML += '<p class="success">✅ jQuery功能正常</p>';
+            } else {
+                results.innerHTML += '<p class="error">❌ jQuery功能异常</p>';
+            }
+        }
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            detectPlatform();
+            
+            // 延迟检查加载状态
+            setTimeout(() => {
+                if (document.getElementById('bootstrap-test').className.includes('loading')) {
+                    updateStatus('bootstrap-test', 'error', 'Bootstrap CSS 加载超时');
+                }
+                if (document.getElementById('bootstrap-js-test').className.includes('loading')) {
+                    updateStatus('bootstrap-js-test', 'error', 'Bootstrap JavaScript 加载超时');
+                }
+                if (document.getElementById('slick-test').className.includes('loading')) {
+                    updateStatus('slick-test', 'error', 'Slick Carousel 加载超时');
+                }
+                if (document.getElementById('fontawesome-test').className.includes('loading')) {
+                    updateStatus('fontawesome-test', 'error', 'Font Awesome 加载超时');
+                }
+                if (document.getElementById('jquery-test').className.includes('loading')) {
+                    updateStatus('jquery-test', 'error', 'jQuery 加载超时');
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html> 

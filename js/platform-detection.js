@@ -105,67 +105,32 @@
     
     // 初始化优化加载
     function initOptimizedLoading() {
-        const cdn = getOptimizedCDN();
         const os = detectOS();
         const network = detectNetwork();
         
         console.log(`检测到平台: ${os}, 网络环境: ${network}`);
-        console.log('使用优化的CDN配置:', cdn);
+        console.log('已使用优化的CDN配置（unpkg.com + cdnjs.cloudflare.com）');
         
-        // 移除现有的CDN链接
-        const existingLinks = document.querySelectorAll('link[href*="cdn.jsdelivr.net"], link[href*="cdnjs.cloudflare.com"]');
-        existingLinks.forEach(link => {
-            if (link.href.includes('bootstrap') || link.href.includes('slick') || link.href.includes('font-awesome') || link.href.includes('animate')) {
-                link.remove();
-            }
-        });
-        
-        // 移除现有的脚本
-        const existingScripts = document.querySelectorAll('script[src*="cdn.jsdelivr.net"], script[src*="cdnjs.cloudflare.com"]');
-        existingScripts.forEach(script => {
-            if (script.src.includes('bootstrap') || script.src.includes('slick') || script.src.includes('jquery')) {
-                script.remove();
-            }
-        });
-        
-        // 按顺序加载资源
-        const loadSequence = [
-            // CSS资源
-            () => loadResource('css', cdn.bootstrap.css),
-            () => loadResource('css', cdn.fontawesome),
-            () => loadResource('css', cdn.animate),
-            () => loadResource('css', cdn.slick.css),
-            () => loadResource('css', cdn.slick.theme),
-            
-            // JavaScript资源
-            () => loadResource('js', cdn.jquery),
-            () => loadResource('js', cdn.bootstrap.js),
-            () => loadResource('js', cdn.slick.js)
-        ];
-        
-        // 顺序加载
-        loadSequence.reduce((promise, loader) => {
-            return promise.then(() => loader());
-        }, Promise.resolve()).then(() => {
-            console.log('所有资源加载完成');
-            
-            // 初始化Bootstrap功能
+        // 检查资源是否正常加载
+        setTimeout(() => {
             if (typeof bootstrap !== 'undefined') {
+                console.log('Bootstrap加载成功');
+                
                 // 初始化tooltip
                 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
                 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                     return new bootstrap.Tooltip(tooltipTriggerEl);
                 });
                 console.log('Bootstrap tooltip初始化完成');
+            } else {
+                console.warn('Bootstrap加载失败，启用备用方案');
+                // 启用备用样式
+                var fallbackCSS = document.getElementById('bootstrap-fallback');
+                if (fallbackCSS) {
+                    fallbackCSS.disabled = false;
+                }
             }
-        }).catch(error => {
-            console.warn('资源加载失败，启用备用方案:', error);
-            // 启用备用样式
-            var fallbackCSS = document.getElementById('bootstrap-fallback');
-            if (fallbackCSS) {
-                fallbackCSS.disabled = false;
-            }
-        });
+        }, 1000);
     }
     
     // 页面加载完成后执行
