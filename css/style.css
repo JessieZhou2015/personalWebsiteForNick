@@ -700,7 +700,7 @@ footer p {
     
     /* 技能部分手机端两列显示 */
     #skills .col-md-4 {
-        width: 50%;
+        width: 50% !important;
     }
     
     /* 手机端技能卡片内边距调整 */
@@ -859,4 +859,142 @@ footer p {
 
 .education-tag:first-of-type {
     margin-left: 5px;
+}
+
+/* 桌面端样式确保 */
+@media (min-width: 1024px) {
+    /* 确保桌面端技能部分为三列显示 */
+    #skills .col-md-4 {
+        width: 33.333333% !important;
+    }
+    
+    /* 确保桌面端联系部分为三列显示 */
+    #contact .col-lg-4 {
+        width: 33.333333% !important;
+        padding: 0 15px !important;
+    }
+    
+    #contact .col-lg-4:last-child {
+        width: 33.333333% !important;
+        margin-top: 0 !important;
+    }
+    
+    /* 桌面端技能卡片样式 */
+    .skill-card {
+        padding: 30px;
+    }
+    
+    .skill-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+    
+    .skill-icon i {
+        font-size: 28px;
+    }
+    
+    .skill-card h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .skill-card p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    /* 桌面端联系方式样式 */
+    .contact-item-centered {
+        padding: 20px;
+    }
+    
+    .contact-item-centered .icon {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+    
+    .contact-item-centered .text h4 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    
+    .contact-item-centered .text p {
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+    
+    /* 桌面端导航栏样式 */
+    .navbar-collapse {
+        background-color: transparent;
+        backdrop-filter: none;
+        border-radius: 0;
+        padding: 0;
+        margin-top: 0;
+    }
+    
+    /* 桌面端字体大小 */
+    .name {
+        font-size: 52px;
+    }
+    
+    .title {
+        font-size: 24px;
+    }
+    
+    .section-title h2 {
+        font-size: 42px;
+    }
+    
+    .section {
+        padding: 100px 0;
+    }
+    
+    #home {
+        padding-top: 100px;
+    }
+}
+
+/* 中等屏幕尺寸样式确保 */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* 确保中等屏幕技能部分为三列显示 */
+    #skills .col-md-4 {
+        width: 33.333333% !important;
+    }
+    
+    /* 确保中等屏幕联系部分为三列显示 */
+    #contact .col-lg-4 {
+        width: 33.333333% !important;
+        padding: 0 15px !important;
+    }
+    
+    #contact .col-lg-4:last-child {
+        width: 33.333333% !important;
+        margin-top: 0 !important;
+    }
+    
+    /* 中等屏幕技能卡片样式 */
+    .skill-card {
+        padding: 25px;
+    }
+    
+    .skill-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 18px;
+    }
+    
+    .skill-icon i {
+        font-size: 24px;
+    }
+    
+    .skill-card h3 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+    
+    .skill-card p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
 } 
