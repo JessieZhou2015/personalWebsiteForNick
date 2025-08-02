@@ -1,0 +1,119 @@
+/* Windows系统颜色修复 */
+/* 解决Windows系统上文字显示为灰色的问题 */
+
+/* 强制使用明确的颜色值，避免半透明颜色在Windows上的渲染问题 */
+body,
+h1, h2, h3, h4, h5, h6,
+p,
+span,
+div {
+    color: #FFF9F5 !important;
+}
+
+/* 确保所有文字元素都使用明确的颜色 */
+.section-title p,
+.skill-card p,
+.timeline-content p,
+.timeline-content .period,
+.project-info p,
+.contact-item .text p,
+.form-control::placeholder,
+footer p,
+.education-tag {
+    color: #FFF9F5 !important;
+}
+
+/* 主要颜色保持橙色 */
+.section-title h2,
+.experience-category,
+.navbar-brand,
+.nav-link:hover,
+.nav-link.active,
+.portfolio-overlay h3,
+.project-info h3,
+.contact-item .text h3,
+.contact-item-centered .text h4,
+.skill-card h3,
+.timeline-content h4,
+.timeline-content h5,
+.name,
+.title,
+.primary-text,
+.highlight-text {
+    color: #FFA826 !important;
+}
+
+/* 确保背景色正确 */
+body {
+    background-color: #090712 !important;
+}
+
+/* 确保链接颜色正确 */
+a {
+    color: #FFA826 !important;
+}
+
+a:hover {
+    color: #e89518 !important;
+}
+
+/* 确保按钮文字颜色正确 */
+.btn-download,
+.btn-view-project,
+.btn-send {
+    color: #fff !important;
+}
+
+/* 确保导航栏文字颜色正确 */
+.nav-link {
+    color: #FFF9F5 !important;
+}
+
+/* 确保联系信息文字颜色正确 */
+.contact-info {
+    color: #FFF9F5 !important;
+}
+
+/* 确保图标颜色正确 */
+.contact-info i,
+.skill-icon i,
+.contact-item .icon i,
+.contact-item-centered .icon i {
+    color: #FFA826 !important;
+}
+
+/* 确保模态框文字颜色正确 */
+.modal-title,
+.project-content {
+    color: #FFF9F5 !important;
+}
+
+/* 确保表单控件文字颜色正确 */
+.form-control {
+    color: #FFF9F5 !important;
+}
+
+/* 确保页脚文字颜色正确 */
+footer p {
+    color: #FFF9F5 !important;
+}
+
+/* 确保所有段落文字颜色正确 */
+p {
+    color: #FFF9F5 !important;
+}
+
+/* 确保所有标题文字颜色正确（除了主要颜色） */
+h1, h2, h3, h4, h5, h6 {
+    color: #FFF9F5 !important;
+}
+
+/* 确保所有div文字颜色正确 */
+div {
+    color: #FFF9F5 !important;
+}
+
+/* 确保所有span文字颜色正确 */
+span {
+    color: #FFF9F5 !important;
+} 

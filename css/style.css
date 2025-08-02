@@ -69,7 +69,7 @@ a:hover {
 
 .section-title p {
     font-size: 18px;
-    color: rgba(255, 249, 245, 0.8);
+    color: var(--text-color) !important;
 }
 
 /* 导航栏 */
@@ -257,7 +257,7 @@ a:hover {
 }
 
 .skill-card p {
-    color: rgba(255, 249, 245, 0.8);
+    color: var(--text-color) !important;
     margin-bottom: 0;
 }
 
@@ -376,12 +376,13 @@ a:hover {
 
 .timeline-content .period {
     font-size: 14px;
-    color: rgba(255, 249, 245, 0.7);
+    color: var(--text-color) !important;
     margin-bottom: 8px;
 }
 
 .timeline-content p {
     margin-bottom: 0;
+    color: var(--text-color) !important;
 }
 
 /* 作品部分 */
@@ -526,7 +527,7 @@ a:hover {
 }
 
 .project-info p {
-    color: rgba(255, 249, 245, 0.9);
+    color: var(--text-color) !important;
 }
 
 /* 联系部分 */
@@ -572,7 +573,7 @@ a:hover {
 
 .contact-item .text p {
     font-size: 16px;
-    color: rgba(255, 249, 245, 0.8);
+    color: var(--text-color) !important;
     margin-bottom: 0;
     line-height: 1.6;
 }
@@ -601,7 +602,7 @@ a:hover {
 }
 
 .form-control::placeholder {
-    color: rgba(255, 249, 245, 0.5);
+    color: var(--text-color) !important;
 }
 
 .btn-send {
@@ -632,7 +633,7 @@ footer {
 
 footer p {
     margin-bottom: 0;
-    color: rgba(255, 249, 245, 0.7);
+    color: var(--text-color) !important;
 }
 
 /* 响应式设计 */
@@ -846,7 +847,7 @@ footer p {
 .education-tag {
     display: inline-block;
     font-size: 10px;
-    color: rgba(255, 249, 245, 0.5);
+    color: var(--text-color) !important;
     background-color: transparent;
     padding: 0 8px;
     border-radius: 10px;
