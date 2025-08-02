@@ -57,8 +57,10 @@ a:hover {
     color: #e89518 !important;
 }
 
-/* 确保按钮样式正确 */
-.btn-download {
+/* 确保按钮样式正确 - 使用更高优先级 */
+a.btn-download,
+.btn-download,
+a[href*="倪辰_高级UI_10年经验_18514592618.pdf"] {
     background-color: #FFA826 !important;
     color: #fff !important;
     border: 1px solid #FFA826 !important;
@@ -69,14 +71,19 @@ a:hover {
     align-items: center !important;
     text-decoration: none !important;
     transition: all 0.3s ease !important;
+    background-image: none !important;
+    box-shadow: none !important;
 }
 
-.btn-download:hover {
+a.btn-download:hover,
+.btn-download:hover,
+a[href*="倪辰_高级UI_10年经验_18514592618.pdf"]:hover {
     background-color: #e89518 !important;
     color: #fff !important;
     border-color: #e89518 !important;
     transform: translateY(-3px) !important;
     box-shadow: 0 10px 20px rgba(255, 168, 38, 0.2) !important;
+    background-image: none !important;
 }
 
 .btn-view-project,
